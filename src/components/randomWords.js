@@ -1,4 +1,4 @@
-const words = ['vodka',
+const drinks = ['vodka',
     'cocktail',
     'olive',
     'soda',
@@ -9,13 +9,8 @@ const words = ['vodka',
     'pineapple',
     'orange']
 
-function randomWord(){
-  return words[Math.floor(Math.random() * words.length)]
-} ;
+function randomWord() {
 
-// let answerArray = []; //empty array for the dashes/answers answerArray
-// // let answerArray = () => {
-//     for (i = 0; i < word.length; i++){
-//         answerArray[i]= "_";
-
-export {randomWord}
+    return drinks[Math.floor(Math.random() * drinks.length)];
+}
+export { randomWord }
