@@ -1,11 +1,15 @@
 import React from "react";
+import footer from "../images/footer.png";
 
-function Footer() {
-    return (
-        <div>
-            <h1>This is footer</h1>
-        </div>
-    );
+
+class Footer extends React.Component {
+    render() {
+        return (
+            <div>
+                <img src={footer} alt="winterscape" />
+            </div>
+        )
+    }
 }
 
 export default Footer;

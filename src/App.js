@@ -6,12 +6,15 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Reward from './components/reward';
 import Snowman from './components/Snowman';
 import About from './components/About';
 import Background from './components/Background';
 import Gameinfo from './components/Gameinfo';
 import Home from './components/Home';
-import reward from './components/reward';
+// import footer from './components/Footer';
+
+
 
 
 function App() {
@@ -34,8 +37,20 @@ function App() {
           <li>
             <Link to="/snowman">The Game</Link>
           </li>
+          <li>
+            <Link to="/reward">Recipes</Link>
+          </li>
+          {/* <li>
+            <Link to="/footer">Footer</Link>
+          </li> */}
         </ul>
         <Switch>
+          {/* <Route path="/footer">
+            <Footer />
+          </Route> */}
+          <Route path="/reward">
+            <Reward />
+          </Route>
           <Route path="/snowman">
             <Snowman />
           </Route>

@@ -14,9 +14,9 @@ import snowman5 from "../images/snowman5.jpg"
 import snowman6 from "../images/snowman6.jpg"
 import snowman7 from "../images/snowman7.jpg"
 
-class Reward extends React.Component {
-    cons
-}
+// class Reward extends React.Component {
+//     cons
+// }
 
 class Snowman extends React.Component {
     static defaultProps = {
@@ -48,7 +48,7 @@ class Snowman extends React.Component {
     keyboardButtons() {
         return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
             <button
-                class='btn btn-primary m-2'
+                className='btn btn-primary m-2'
                 key={letter}
                 value={letter}
                 onClick={this.handleGuessed}
@@ -74,7 +74,7 @@ class Snowman extends React.Component {
 
     render() {
         const gameOver = this.state.incorrectGuess >= this.props.maxTries;
-        const Winner = this.guessedWord().join("")
+        // const Winner = this.guessed().join("")
         let gameKeyboard = this.keyboardButtons();
 
 
@@ -88,7 +88,7 @@ class Snowman extends React.Component {
                 <div className='text-center'><img src={this.props.images[this.state.incorrectGuess]} alt="" /></div>
                 <div className="text-center"><h2>Try and guess the word </h2></div>
                 <div className="text-center"><h3>Hint:it will be an ingredient or name of a drink! </h3></div>
-                <div className="text-center"><p>{!gameOver ? this.guessedWord : this.state.theAnswer}</p></div>
+                <div className="text-center"><h3>{!gameOver ? this.guessed : this.state.theAnswer}</h3></div>
                 <p>{gameKeyboard}</p>
                 <button className='btn btn-info' onClick={this.resetButton}>Reset</button>
             </div>
