@@ -14,10 +14,6 @@ import snowman5 from "../images/snowman5.jpg"
 import snowman6 from "../images/snowman6.jpg"
 import snowman7 from "../images/snowman7.jpg"
 
-// class Reward extends React.Component {
-//     cons
-// }
-
 class Snowman extends React.Component {
     static defaultProps = {
         maxTries: 7,
