@@ -12,8 +12,6 @@ import About from './components/About';
 import Background from './components/Background';
 import Gameinfo from './components/Gameinfo';
 import Home from './components/Home';
-// import footer from './components/Footer';
-
 
 
 
@@ -38,16 +36,10 @@ function App() {
             <Link to="/snowman">The Game</Link>
           </li>
           <li>
-            <Link to="/reward">Recipes</Link>
+            <Link to="/reward">Reward</Link>
           </li>
-          {/* <li>
-            <Link to="/footer">Footer</Link>
-          </li> */}
         </ul>
         <Switch>
-          {/* <Route path="/footer">
-            <Footer />
-          </Route> */}
           <Route path="/reward">
             <Reward />
           </Route>

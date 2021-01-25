@@ -38,7 +38,7 @@ class Snowman extends React.Component {
         })
     }
     guessedWord() {
-        return this.state.theAnswer.split("").map(letter => (this.state.guessed.has ? letter : "_"))
+        return this.state.guessedWord.split("").map(letter => (this.state.guessed.has ? letter : " _ "))
     }
 
     keyboardButtons() {
@@ -49,7 +49,9 @@ class Snowman extends React.Component {
                 value={letter}
                 onClick={this.handleGuessed}
             >{letter}</button>),
-            // disabled = { setState.guessed(letter) 
+
+            // disabled = {
+            //     setState.guessed(letter) 
 
             // document.getElementById("keyboardButtons").disabled = true
 
@@ -65,7 +67,6 @@ class Snowman extends React.Component {
         });
     }
 
-    // }
 
 
     render() {
@@ -83,7 +84,7 @@ class Snowman extends React.Component {
                 <div className="Incorrect Guesses"> Incorrect Guesses:{this.state.incorrectGuess} of {this.props.maxTries}</div>
                 <div className='text-center'><img src={this.props.images[this.state.incorrectGuess]} alt="" /></div>
                 <div className="text-center"><h2>Try and guess the word </h2></div>
-                <div className="text-center"><h3>Hint:it will be an ingredient or name of a drink! </h3></div>
+                <div className="text-center"><h3>Hint:it will be an ingredient or name of a beer! </h3></div>
                 <div className="text-center"><h3>{!gameOver ? this.guessed : this.state.theAnswer}</h3></div>
                 <p>{gameKeyboard}</p>
                 <button className='btn btn-info' onClick={this.resetButton}>Reset</button>
