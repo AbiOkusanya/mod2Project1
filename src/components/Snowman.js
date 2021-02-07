@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 
 import './Snowman.css';
 import { randomWord } from "./randomWords.js";
@@ -14,7 +14,7 @@ import snowman5 from "../images/snowman5.jpg"
 import snowman6 from "../images/snowman6.jpg"
 import snowman7 from "../images/snowman7.jpg"
 
-class Snowman extends React.Component {
+class Snowman extends Component {
     static defaultProps = {
         maxTries: 7,
         images: [snowman0, snowman1, snowman2, snowman3, snowman4, snowman5, snowman6, snowman7]
@@ -23,22 +23,22 @@ class Snowman extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            guessed: ([]),
             incorrectGuess: 0,
+            guessed: ([]),
             theAnswer: randomWord()
         }
 
     }
 
-    handleGuessed = e => {
-        let letter = e.target.value;
-        this.setState({
-            guessed: [...this.state.guessed, letter],
-            incorrectGuess: this.state.incorrectGuess + (this.state.theAnswer.includes(letter) ? 0 : 1)
-        })
-    }
+    // handleGuessed = e => {
+    //     let letter = e.target.value;
+    //     this.setState({
+    //         guessed: [...this.state.guessed, letter],
+    //         incorrectGuess: this.state.incorrectGuess + (this.state.theAnswer.includes(letter) ? 0 : 1)
+    //     })
+    // }
     guessedWord() {
-        return this.state.guessedWord.split("").map(letter => (this.state.guessed.has ? letter : " _ "))
+        return this.state.theAnswer.split(" ").map(letter => (this.state.guessed.has ? letter : "_"))
     }
 
     keyboardButtons() {
@@ -49,11 +49,6 @@ class Snowman extends React.Component {
                 value={letter}
                 onClick={this.handleGuessed}
             >{letter}</button>),
-
-            // disabled = {
-            //     setState.guessed(letter) 
-
-            // document.getElementById("keyboardButtons").disabled = true
 
 
 
@@ -67,6 +62,7 @@ class Snowman extends React.Component {
         });
     }
 
+    // }
 
 
     render() {
@@ -84,7 +80,7 @@ class Snowman extends React.Component {
                 <div className="Incorrect Guesses"> Incorrect Guesses:{this.state.incorrectGuess} of {this.props.maxTries}</div>
                 <div className='text-center'><img src={this.props.images[this.state.incorrectGuess]} alt="" /></div>
                 <div className="text-center"><h2>Try and guess the word </h2></div>
-                <div className="text-center"><h3>Hint:it will be an ingredient or name of a beer! </h3></div>
+                <div className="text-center"><h3>Hint:it will be an ingredient or name of a drink! </h3></div>
                 <div className="text-center"><h3>{!gameOver ? this.guessed : this.state.theAnswer}</h3></div>
                 <p>{gameKeyboard}</p>
                 <button className='btn btn-info' onClick={this.resetButton}>Reset</button>
