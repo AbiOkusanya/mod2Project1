@@ -24,51 +24,61 @@ class Snowman extends Component {
         super(props);
         this.state = {
             incorrectGuess: 0,
-            guessed: ([]),
+            guessed: new Set([]),
             theAnswer: randomWord()
-        }
 
+        }
+        // this.handleGuessed = this.handleGuessed.bind(this);
     }
 
-    // handleGuessed = e => {
-    //     let letter = e.target.value;
-    //     this.setState({
-    //         guessed: [...this.state.guessed, letter],
-    //         incorrectGuess: this.state.incorrectGuess + (this.state.theAnswer.includes(letter) ? 0 : 1)
-    //     })
-    // }
+    handleGuessed = e => {
+        let letter = e.target.value;
+        this.setState(st => ({
+            guessed: st.guessed.add(letter),
+            incorrectGuess: st.incorrectGuess + (st.theAnswer.includes(letter) ? 0 : 1)
+        }))
+    }
     guessedWord() {
-        return this.state.theAnswer.split(" ").map(letter => (this.state.guessed.has ? letter : "_"))
+        return this.state.theAnswer.split("").map(letter => (this.state.guessed.has(letter) ? letter : " _ "));
     }
 
     keyboardButtons() {
         return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
             <button
-                className='btn btn-primary m-2'
+                class='btn btn-primary m-2'
                 key={letter}
                 value={letter}
-                onClick={this.handleGuessed}
-            >{letter}</button>),
-
-
-
-        );
+                onClick={this.handleGuessed}>
+                {/* disabled={this.state.guessed.has(letter)} */}
+                {letter}
+            </button>
+        ));
     }
     resetButton = () => {
         this.setState({
-            guessed: ([]),
             incorrectGuess: 0,
+            guessed: new ([]),
             theAnswer: randomWord()
         });
     }
+
 
     // }
 
 
     render() {
         const gameOver = this.state.incorrectGuess >= this.props.maxTries;
-        // const Winner = this.guessed().join("")
-        let gameKeyboard = this.keyboardButtons();
+        const winner = this.guessedWord().join("") === this.state.theAnswer;
+        let gameRound = this.keyboardButtons();
+
+        if (winner) {
+            gameRound = " Yes! Time for a beer , click here!"
+        }
+
+        if (gameOver) {
+            gameRound = "It's okay, hit reset and try again!"
+            // <ul>< li > <Link to="/reward">Reward</Link></li ></ul>
+        }
 
 
         // }
@@ -80,9 +90,9 @@ class Snowman extends Component {
                 <div className="Incorrect Guesses"> Incorrect Guesses:{this.state.incorrectGuess} of {this.props.maxTries}</div>
                 <div className='text-center'><img src={this.props.images[this.state.incorrectGuess]} alt="" /></div>
                 <div className="text-center"><h2>Try and guess the word </h2></div>
-                <div className="text-center"><h3>Hint:it will be an ingredient or name of a drink! </h3></div>
-                <div className="text-center"><h3>{!gameOver ? this.guessed : this.state.theAnswer}</h3></div>
-                <p>{gameKeyboard}</p>
+                <div className="text-center"><h3>Hint: It will be an ingredient or name of a beer! </h3></div>
+                <div className="text-center"><h3>{!gameOver ? this.guessedWord : this.state.theAnswer}</h3></div>
+                <p>{gameRound}</p>
                 <button className='btn btn-info' onClick={this.resetButton}>Reset</button>
             </div>
 

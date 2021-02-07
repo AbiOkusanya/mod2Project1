@@ -9,6 +9,7 @@ class Reward extends React.Component {
         super(props);
         this.state = {}
         // { data: ' ' }
+        this.handleGuessed = this.handleGuessed.bind(this)
     }
 
 
