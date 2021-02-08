@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import './Snowman.css';
 import { randomWord } from "./randomWords.js";
+import { Link } from "react-router-dom";
 
 
 import snowman0 from "../images/snowman0.JPG"
@@ -28,7 +29,7 @@ class Snowman extends Component {
             theAnswer: randomWord()
 
         }
-        // this.handleGuessed = this.handleGuessed.bind(this);
+        this.handleGuessed = this.handleGuessed.bind(this);
     }
 
     handleGuessed = e => {
@@ -57,7 +58,7 @@ class Snowman extends Component {
     resetButton = () => {
         this.setState({
             incorrectGuess: 0,
-            guessed: new ([]),
+            guessed: new Set([]),
             theAnswer: randomWord()
         });
     }
@@ -72,12 +73,13 @@ class Snowman extends Component {
         let gameRound = this.keyboardButtons();
 
         if (winner) {
-            gameRound = " Yes! Time for a beer , click here!"
+            gameRound = " Yes! Time for a beer , click here!";
+            <Link to='/reward'>Reward</Link>
         }
 
-        if (gameOver) {
+        else if (gameOver) {
             gameRound = "It's okay, hit reset and try again!"
-            // <ul>< li > <Link to="/reward">Reward</Link></li ></ul>
+
         }
 
 

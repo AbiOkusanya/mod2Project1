@@ -8,8 +8,8 @@ class Reward extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
-        // { data: ' ' }
-        this.handleGuessed = this.handleGuessed.bind(this)
+
+        // this.handleGuessed = this.handleGuessed.bind(this)
     }
 
 
