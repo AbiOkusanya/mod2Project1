@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 
-const Reward_URL = 'https://api.punkapi.com/v2/beers'
+const Reward_URL = 'https://api.punkapi.com/v2/beers/random'
 
 class Reward extends React.Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class Reward extends React.Component {
     render() {
         return (
             <div className="beers container">
-                <h3>Reward Recipe</h3>
+                <h3>A beer for you! </h3>
                 <ul>
 
                     {

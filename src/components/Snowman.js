@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import './Snowman.css';
 import { randomWord } from "./randomWords.js";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 import snowman0 from "../images/snowman0.JPG"
@@ -73,12 +73,12 @@ class Snowman extends Component {
         let gameRound = this.keyboardButtons();
 
         if (winner) {
-            gameRound = " Yes! Time for a beer , click here!";
-            <Link to='/reward'>Reward</Link>
+            gameRound = <h3>" Yes! Time for a beer , click here!"
+             <a href="/reward">Reward</a></h3>;
         }
 
         else if (gameOver) {
-            gameRound = "It's okay, hit reset and try again!"
+            gameRound =<h3> "It's okay, hit reset and try again!"</h3>
 
         }
 
@@ -90,12 +90,13 @@ class Snowman extends Component {
                 <h1 className='text shadow'>Guess who's back? Snowman!</h1>
 
                 <div className="Incorrect Guesses"> Incorrect Guesses:{this.state.incorrectGuess} of {this.props.maxTries}</div>
-                <div className='text-center'><img src={this.props.images[this.state.incorrectGuess]} alt="" /></div>
+                <div className="text-center"><img src={this.props.images[this.state.incorrectGuess]} alt="" /></div>
                 <div className="text-center"><h2>Try and guess the word </h2></div>
                 <div className="text-center"><h3>Hint: It will be an ingredient or name of a beer! </h3></div>
-                <div className="text-center"><h3>{!gameOver ? this.guessedWord : this.state.theAnswer}</h3></div>
+                <p>{!gameOver ? this.guessedWord () : this.state.theAnswer}</p>
                 <p>{gameRound}</p>
                 <button className='btn btn-info' onClick={this.resetButton}>Reset</button>
+                
             </div>
 
         )

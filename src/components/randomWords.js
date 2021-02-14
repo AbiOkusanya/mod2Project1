@@ -8,7 +8,10 @@ const drinks = ['hops',
     'pabst',
     'modelo',
     'yeast',
-    "banana"]
+    'banana',
+    'coffee',
+    'ginger',
+    'miller',]
 
 function randomWord() {
 
